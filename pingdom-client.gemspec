@@ -46,5 +46,5 @@ Gem::Specification.new do |s|
   
   s.add_dependency("bundler", [">= 1.0.0"])
   s.add_dependency("rake", [">= 0.8.7"])
-  s.add_dependency("rspec", ["= 2.1.0"])
+  s.add_dependency("rspec", [">= 2.1.0"])
 end
