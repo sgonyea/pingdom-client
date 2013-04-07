@@ -1,6 +1,7 @@
 source :rubygems
 
 gem "faraday"
+gem "faraday_middleware"
 
 gem "excon"
 gem "yajl-ruby", :require => "yajl"
