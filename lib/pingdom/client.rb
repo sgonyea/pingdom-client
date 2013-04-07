@@ -1,5 +1,5 @@
 require File.join(File.dirname(__FILE__), '..', 'pingdom-client') unless defined? Pingdom
-# hrequire 'faraday_middleware'
+require 'faraday_middleware'
 
 module Pingdom
   class Client
@@ -13,6 +13,7 @@ module Pingdom
       
       @connection = Faraday::Connection.new(:url => "https://api/pingdom.com/api/2.0/") do |builder|
         # builder.use Faraday::Response::Logger
+        builder.use FaradayMiddleware::ParseJson, :content_type => /\bjson$/
 
         builder.url_prefix = "https://api.pingdom.com/api/2.0"
         
@@ -21,7 +22,7 @@ module Pingdom
         builder.adapter @options[:http_driver]
         
         # builder.use Gzip # TODO: write GZip response handler, add Accept-Encoding: gzip header
-        # builder.response :yajl
+        builder.response :json
         builder.use Tinder::FaradayResponse::WithIndifferentAccess
         
         builder.basic_auth @options[:username], @options[:password]
