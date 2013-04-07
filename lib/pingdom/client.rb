@@ -1,5 +1,5 @@
 require File.join(File.dirname(__FILE__), '..', 'pingdom-client') unless defined? Pingdom
-require 'faraday_middleware'
+# require 'faraday_middleware'
 
 module Pingdom
   class Client
@@ -12,11 +12,11 @@ module Pingdom
       raise ArgumentError, "an application key must be provided (as :key)" unless @options.key?(:key)
       
       @connection = Faraday::Connection.new(:url => "https://api/pingdom.com/api/2.0/") do |builder|
-        builder.use Faraday::Response::Logger
+        # builder.use Faraday::Response::Logger
         
         builder.url_prefix = "https://api.pingdom.com/api/2.0"
         
-        builder.adapter :logger, @options[:logger]
+        # builder.adapter :logger, @options[:logger]
         
         builder.adapter @options[:http_driver]
         
