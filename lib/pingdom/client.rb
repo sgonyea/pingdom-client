@@ -1,5 +1,5 @@
 require File.join(File.dirname(__FILE__), '..', 'pingdom-client') unless defined? Pingdom
-require 'faraday_middleware'
+# require 'faraday_middleware'
 
 module Pingdom
   class Client
