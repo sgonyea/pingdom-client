@@ -12,12 +12,12 @@ module Pingdom
       raise ArgumentError, "an application key must be provided (as :key)" unless @options.key?(:key)
       
       @connection = Faraday::Connection.new(:url => "https://api/pingdom.com/api/2.0/") do |builder|
-        builder.use Faraday::Response::Yajl
-        builder.use FaradayMiddleware::ParseJson, :content_type => /\bjson$/
+        # builder.use Faraday::Response::Yajl
+        # builder.use FaradayMiddleware::ParseJson, :content_type => /\bjson$/
 
         builder.url_prefix = "https://api.pingdom.com/api/2.0"
         
-        # builder.adapter :logger, @options[:logger]
+        builder.adapter :logger, @options[:logger]
         
         builder.adapter @options[:http_driver]
         
