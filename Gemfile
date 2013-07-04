@@ -1,6 +1,6 @@
 source :rubygems
 
-gem "faraday", "0.5.7"
+gem "faraday"
 # gem "faraday_middleware"
 
 gem "excon"
